@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.ant-input{
+  border-radius: 0px;
+}
+textarea{
+  resize: none;
+}
+.ant-picker{
+  border-radius: 0px;
+}

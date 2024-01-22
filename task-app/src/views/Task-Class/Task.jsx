@@ -1,6 +1,6 @@
 import React from 'react'
 import '@/views/Task.less';
-import { Button, Popconfirm, Table, Modal, Tag } from 'antd';
+import { Button, Popconfirm, Table, Modal, Tag, Form, Input, DatePicker } from 'antd';
 
 /* 对日期处理的方法 */
 const zero = function zero(text) {
@@ -65,14 +65,17 @@ class Task extends React.Component {
     confirmLoading: false
   }
   // 关闭窗口
-  // handleCancel() {
-  //   this.modalVisible(false)
-  // }
-  // // 点击确定
-  // handleOk() {
-  //   console.log("点击OK")
-  //   this.confirmLoading(true)
-  // }
+  handleCloseModal = () => {
+    console.log("点击关闭")
+    this.setState({
+      modalVisible: false
+    })
+  }
+  // 点击确定
+  handleSubmit = () => {
+    console.log("点击确定")
+
+  }
   render() {
     let { tableData, tableLoading, modalVisible, confirmLoading } = this.state
     return (
@@ -112,12 +115,17 @@ class Task extends React.Component {
           open={modalVisible}
           getContainer={false}
           confirmLoading={confirmLoading}
-        // onCancel={() => handleCancel}
-        // onOk={handleOk}
+          maskClosable={false}
+          okText="确认提交"
+          onCancel={this.handleCloseModal}
+          onOk={this.handleSubmit}
         >
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
+          <Form>
+            <Form.Item>
+              <Input.TextArea rows={4} />
+            </Form.Item>
+            <DatePicker showTime />
+          </Form>
         </Modal>
       </div >
     )
